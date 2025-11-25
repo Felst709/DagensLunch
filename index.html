@@ -25,7 +25,6 @@
                 </div>
                 <h1 class="text-lg font-bold tracking-tight">DagensLunch<span class="text-orange-500">.se</span></h1>
             </div>
-            
             <div class="text-right">
                 <div class="text-xs font-bold text-orange-500 uppercase tracking-wide" id="week-display">VECKA --</div>
                 <div class="text-sm font-medium text-gray-600 capitalize" id="header-date">Laddar...</div>
@@ -38,7 +37,10 @@
 
         <div class="w-full max-w-5xl">
             
-            <div class="mb-8"></div>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900">Dagens Lunch</h2>
+                <p class="text-gray-500 text-sm mt-1">Välj din stad och hitta rätt</p>
+            </div>
 
             <div class="flex flex-col md:flex-row gap-3 mb-8">
                 <div class="relative md:w-56">
@@ -60,12 +62,7 @@
                 </div>
             </div>
 
-            <div id="restaurant-grid-top" class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-                <div class="col-span-full text-center py-12">
-                    <i class="fa-solid fa-circle-notch fa-spin text-orange-500 text-3xl"></i>
-                    <p class="text-gray-500 mt-2">Hämtar menyer...</p>
-                </div>
-            </div>
+            <div id="restaurant-grid-top" class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8"></div>
 
             <div class="mb-8 shadow-lg rounded-2xl border border-gray-200 p-1 bg-white relative group">
                 <div class="absolute top-2 left-2 z-[400] bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold shadow text-gray-700 pointer-events-none">
@@ -140,9 +137,7 @@
             const filtered = allRestaurants.filter(place => {
                 if (place.city !== city) return false;
                 if (!searchString) return true;
-                const nameMatch = place.name.toLowerCase().includes(searchLower);
-                const foodMatch = place.menu.some(dish => dish.toLowerCase().includes(searchLower));
-                return nameMatch || foodMatch;
+                return place.name.toLowerCase().includes(searchLower) || place.menu.some(d => d.toLowerCase().includes(searchLower));
             });
             renderRestaurants(filtered, city);
         }
@@ -162,10 +157,10 @@
         function renderRestaurants(items, city) {
             const gridTop = document.getElementById('restaurant-grid-top');
             const gridBottom = document.getElementById('restaurant-grid-bottom');
+            gridTop.innerHTML = ''; gridBottom.innerHTML = '';
             
-            gridTop.innerHTML = '';
-            gridBottom.innerHTML = '';
-            
+            const center = cityCenters[city] || cityCenters["Norrköping"];
+
             if (items.length === 0) {
                 gridTop.innerHTML = `<div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100"><p class="text-gray-400 italic">Inga restauranger hittades.</p></div>`;
                 return;
@@ -184,7 +179,7 @@
                 }
 
                 const instaHandle = place.instagram_handle || "@" + place.name.replace(/\s+/g, '').toLowerCase();
-                const dist = getDistance(cityCenters[city].lat, cityCenters[city].lon, place.lat, place.lon);
+                const dist = getDistance(center.lat, center.lon, place.lat, place.lon);
 
                 let priceHtml = `<span class="text-lg font-bold text-gray-900">${place.price}</span>`;
                 if (place.takeaway_price) {
