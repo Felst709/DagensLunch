@@ -11,25 +11,8 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
-        /* Scrollbar-fix */
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        
-        /* Karta */
         #map { height: 250px; width: 100%; z-index: 1; border-radius: 1rem; }
-        
-        .ad-space { 
-            width: 160px; 
-            height: 600px; 
-            background-color: #e5e7eb; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #9ca3af; 
-            font-size: 0.8rem; 
-            border-radius: 0.5rem;
-        }
+        .ad-space { width: 160px; height: 600px; background-color: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.8rem; border-radius: 0.5rem; }
     </style>
 </head>
 <body class="text-gray-800 flex flex-col min-h-screen">
@@ -51,17 +34,11 @@
     </header>
 
     <div class="flex justify-center gap-6 py-8 px-4">
-        
-        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen">
-            <div class="ad-space mb-4">Annons</div>
-        </aside>
+        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen"><div class="ad-space mb-4">Annons</div></aside>
 
         <div class="w-full max-w-5xl">
             
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-900">Östergötlands Luncher</h2>
-                <p class="text-gray-500 text-sm mt-1">Välj din stad och hitta rätt</p>
-            </div>
+            <div class="mb-8"></div>
 
             <div class="flex flex-col md:flex-row gap-3 mb-8">
                 <div class="relative md:w-56">
@@ -97,14 +74,10 @@
                 <div id="map"></div>
             </div>
 
-            <div id="restaurant-grid-bottom" class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                </div>
-
+            <div id="restaurant-grid-bottom" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
         </div>
 
-        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen">
-            <div class="ad-space mb-4">Annons</div>
-        </aside>
+        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen"><div class="ad-space mb-4">Annons</div></aside>
     </div>
 
     <footer class="bg-white border-t border-gray-200 py-12 mt-auto text-center">
@@ -145,7 +118,6 @@
                 updateCity();
             } catch (error) {
                 console.error("Fel:", error);
-                document.getElementById('restaurant-grid-top').innerHTML = '<p class="text-center col-span-full text-red-400">Kunde inte ladda datan.</p>';
             }
         }
 
@@ -194,13 +166,8 @@
             gridTop.innerHTML = '';
             gridBottom.innerHTML = '';
             
-            const center = cityCenters[city] || cityCenters["Norrköping"];
-
             if (items.length === 0) {
-                gridTop.innerHTML = `
-                    <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100">
-                        <p class="text-gray-400 italic">Inga restauranger hittades i ${city} just nu.</p>
-                    </div>`;
+                gridTop.innerHTML = `<div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100"><p class="text-gray-400 italic">Inga restauranger hittades.</p></div>`;
                 return;
             }
 
@@ -217,7 +184,7 @@
                 }
 
                 const instaHandle = place.instagram_handle || "@" + place.name.replace(/\s+/g, '').toLowerCase();
-                const dist = getDistance(center.lat, center.lon, place.lat, place.lon);
+                const dist = getDistance(cityCenters[city].lat, cityCenters[city].lon, place.lat, place.lon);
 
                 let priceHtml = `<span class="text-lg font-bold text-gray-900">${place.price}</span>`;
                 if (place.takeaway_price) {
@@ -237,60 +204,38 @@
                                 <i class="fa-solid fa-star text-yellow-400 text-[8px]"></i> ${place.rating}
                             </div>
                         </div>
-                        
                         <div class="w-2/3 p-4 flex flex-col">
                             <div class="flex justify-between items-start mb-2">
                                 <div class="overflow-hidden pr-2 w-full">
                                     <h3 class="text-sm font-bold text-gray-900 leading-tight line-clamp-2" title="${place.name}">${place.name}</h3>
                                     <p class="text-[10px] text-gray-400 truncate mt-0.5">${place.address}</p>
                                 </div>
-                                
                                 <a href="${place.instagram_url}" target="_blank" class="flex flex-col items-center min-w-[40px] text-pink-600 hover:text-pink-700 transition group/insta">
                                     <i class="fa-brands fa-instagram text-lg mb-0.5"></i>
                                     <span class="text-[8px] font-bold text-gray-400 group-hover/insta:text-pink-600 transition truncate w-full text-center">${instaHandle}</span>
                                 </a>
                             </div>
-
-                            <div class="flex-grow overflow-hidden mb-1">
-                                <ul>${menuHtml}</ul>
-                            </div>
-
+                            <div class="flex-grow overflow-hidden mb-1"><ul>${menuHtml}</ul></div>
                             <div class="flex justify-between items-center mt-auto pt-2 border-t border-gray-50">
-                                <div class="flex items-center">
-                                    ${priceHtml}
-                                </div>
-                                <a href="${place.url}" target="_blank" class="text-[10px] font-bold text-white bg-gray-900 px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">
-                                    Besök
-                                </a>
+                                <div class="flex items-center">${priceHtml}</div>
+                                <a href="${place.url}" target="_blank" class="text-[10px] font-bold text-white bg-gray-900 px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">Besök</a>
                             </div>
                         </div>
                     </div>
                 `;
 
-                if (index < 4) {
-                    gridTop.innerHTML += card;
-                } else {
-                    gridBottom.innerHTML += card;
-                }
+                if (index < 4) gridTop.innerHTML += card;
+                else gridBottom.innerHTML += card;
             });
         }
 
         function initMap(city, searchString = "") {
             const center = cityCenters[city] || cityCenters["Norrköping"];
-            
             if (map) { map.remove(); map = null; }
-
-            // HÄR ÄR ÄNDRINGEN: scrollWheelZoom: false
-            map = L.map('map', {
-                scrollWheelZoom: false
-            }).setView([center.lat, center.lon], 13);
-
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; OpenStreetMap &copy; CARTO'
-            }).addTo(map);
-
-            const searchLower = searchString.toLowerCase();
+            map = L.map('map', { scrollWheelZoom: false }).setView([center.lat, center.lon], 13);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(map);
             
+            const searchLower = searchString.toLowerCase();
             const filtered = allRestaurants.filter(place => {
                 if(place.city !== city) return false;
                 if(!searchString) return true;
@@ -298,15 +243,7 @@
             });
 
             filtered.forEach(place => {
-                L.marker([place.lat, place.lon])
-                    .bindPopup(`
-                        <div class="text-center">
-                            <b class="text-sm">${place.name}</b><br>
-                            <span class="text-xs text-gray-500">${place.address}</span><br>
-                            <a href="${place.url}" target="_blank" class="text-orange-500 text-xs font-bold">Besök</a>
-                        </div>
-                    `)
-                    .addTo(map);
+                L.marker([place.lat, place.lon]).bindPopup(`<div class="text-center"><b class="text-sm">${place.name}</b><br><span class="text-xs text-gray-500">${place.address}</span></div>`).addTo(map);
             });
         }
 
