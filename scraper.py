@@ -254,4 +254,14 @@ def scrape_lunch():
             print(f"Fel {rest['name']}: {e}")
             output_data.append({
                 "name": rest['name'], "city": rest['city'], "lat": rest['lat'], "lon": rest['lon'],
-                "url": rest['url'], "menu": rest.get('manual_menu', []), "take
+                "url": rest['url'], "menu": rest.get('manual_menu', []), "takeaway_price": None,
+                **rest['static_data']
+            })
+        time.sleep(1)
+
+    with open('lunch_data.json', 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, ensure_ascii=False, indent=4)
+    print("--- Klart! ---")
+
+if __name__ == "__main__":
+    scrape_lunch()
