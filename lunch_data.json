@@ -175,8 +175,10 @@
         "lon": 15.624,
         "url": "https://www.yogilinkoping.se",
         "menu": [
-            "Palak Paneer",
-            "Chicken Tikka Masala"
+            "Chicken Tikka Masala",
+            "Palak Paneer (Veg)",
+            "Lamm Curry",
+            "Dagens Naanbröd"
         ],
         "takeaway_price": null,
         "address": "Platensgatan 5",
@@ -206,34 +208,39 @@
         "image": "https://images.unsplash.com/photo-1551183053-bf91b1d3116c?w=600&q=80"
     },
     {
-        "name": "Överste Mörner",
+        "name": "Ingeborgs",
         "city": "Linköping",
         "lat": 58.41,
-        "lon": 15.619,
-        "url": "https://overstemorner.se/lunch/",
-        "menu": [],
+        "lon": 15.6225,
+        "url": "https://ingeborgs.se",
+        "menu": [
+            "Ingeborgs högrevsburgare",
+            "Grillad Levain med kyckling",
+            "Caesarsallad",
+            "Dagens soppa"
+        ],
         "takeaway_price": null,
-        "address": "Stora Torget 9",
-        "rating": 4.1,
-        "price": "149:-",
-        "instagram_url": "https://instagram.com/overstemorner",
-        "instagram_handle": "@overstemorner",
-        "image": "https://images.unsplash.com/photo-1546241072-48010ad2862c?w=600&q=80"
+        "address": "Ågatan 35",
+        "rating": 4.3,
+        "price": "135:-",
+        "instagram_url": "https://instagram.com/ingeborgs_linkoping",
+        "instagram_handle": "@ingeborgs_lkpg",
+        "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80"
     },
     {
-        "name": "M.O.O",
+        "name": "Brasserie Grand",
         "city": "Linköping",
-        "lat": 58.4115,
-        "lon": 15.623,
-        "url": "https://moo.se/lunch",
+        "lat": 58.4085,
+        "lon": 15.622,
+        "url": "https://grandhotel.se/restaurang/lunch/",
         "menu": [],
         "takeaway_price": null,
-        "address": "Ågatan 31",
-        "rating": 4.5,
-        "price": "159:-",
-        "instagram_url": "https://instagram.com/moolinkoping",
-        "instagram_handle": "@moolinkoping",
-        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80"
+        "address": "Storgatan 21",
+        "rating": 4.6,
+        "price": "165:-",
+        "instagram_url": "https://instagram.com/grandhotellinkoping",
+        "instagram_handle": "@grandhotellkpg",
+        "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
     },
     {
         "name": "Olympia",
@@ -242,8 +249,9 @@
         "lon": 15.618,
         "url": "https://restaurangolympia.se",
         "menu": [
-            "Schnitzel",
-            "Veg: Pasta"
+            "Schnitzel med bearnaise",
+            "Panerad rödspätta",
+            "Veg: Pasta Pesto"
         ],
         "takeaway_price": null,
         "address": "Platensgatan 3",
@@ -254,21 +262,22 @@
         "image": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80"
     },
     {
-        "name": "Ingeborgs",
+        "name": "Cioccolata",
         "city": "Linköping",
-        "lat": 58.41,
-        "lon": 15.6225,
-        "url": "https://ingeborgs.se",
+        "lat": 58.411,
+        "lon": 15.622,
+        "url": "https://cioccolata.se",
         "menu": [
-            "Dagens soppa",
-            "Grillad smörgås"
+            "Husets Lasagne",
+            "Veg: Chevrétoast med honung",
+            "Caesarsallad"
         ],
         "takeaway_price": null,
-        "address": "Ågatan 35",
-        "rating": 4.3,
+        "address": "Ågatan 39",
+        "rating": 4.2,
         "price": "135:-",
-        "instagram_url": "https://instagram.com/ingeborgs_linkoping",
-        "instagram_handle": "@ingeborgs_lkpg",
-        "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80"
+        "instagram_url": "https://instagram.com/cioccolatabistro",
+        "instagram_handle": "@cioccolatabistro",
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80"
     }
 ]
