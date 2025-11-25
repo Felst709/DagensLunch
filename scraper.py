@@ -21,7 +21,10 @@ junk_keywords = [
     "välkomna", "välkommen", "smaklig måltid", "logga in",
     "läs mer", "visa mer", "stäng", "meny", "start", "hem", "skip to content",
     "inkl", "serveras", "gäller", "från", "pris", "dryck", "tillbehör", "sides",
-    "med reservation", "buffé", "salladsbuffé", "kaffe", "kaka", "take away", "avhämtning"
+    "med reservation", "buffé", "salladsbuffé", "kaffe", "kaka", "take away", "avhämtning",
+    "kontantfri", "stadsmission", "beställer mat", "livschanser", "möjligheter",
+    "alingsås", "kristianstad", "stockholm", "göteborg", "malmö", "post",
+    "se meny på hemsidan", "kunde inte nå sida" 
 ]
 
 # Mat-filter
@@ -37,7 +40,7 @@ food_keywords = [
 ]
 
 restaurants_config = [
-    # ================= NORRKÖPING (5 st) =================
+    # ================= NORRKÖPING (8 ST) =================
     {
         "name": "Enoteket", "city": "Norrköping", "lat": 58.5885, "lon": 16.1885,
         "type": "daily", "url": "https://www.enoteket.se/meny/lunch/", "menu_selector": "div.entry-content",
@@ -47,6 +50,16 @@ restaurants_config = [
         "name": "Östgöta Kök", "city": "Norrköping", "lat": 58.5925, "lon": 16.1890,
         "type": "daily", "url": "https://norrkoping.ostgotakok.se/lunchmeny/", "menu_selector": "div.entry-content",
         "static_data": { "address": "Nya Torget", "rating": 4.5, "price": "145:-", "instagram_url": "https://instagram.com/ostgotakok", "instagram_handle": "@ostgotakok", "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" }
+    },
+    {
+        "name": "Louis De Geer", "city": "Norrköping", "lat": 58.5890, "lon": 16.1840,
+        "type": "daily", "url": "https://louisdegeer.se/restaurang/dagens-lunch/", "menu_selector": "div.elementor-widget-container", 
+        "static_data": { "address": "Dalsgatan 15", "rating": 4.4, "price": "135:-", "instagram_url": "https://instagram.com/louisdegeerkonsertkongress", "instagram_handle": "@louisdegeer", "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" }
+    },
+    {
+        "name": "Harrys", "city": "Norrköping", "lat": 58.5878, "lon": 16.1920,
+        "type": "static", "url": "https://harrys.se/sv-se/norrkoeping/menu/aw-shoppinglunch/", "menu_selector": "div.menu-items", 
+        "static_data": { "address": "Drottninggatan 1", "rating": 4.1, "price": "129:-", "instagram_url": "https://instagram.com/harrysnorrkoping", "instagram_handle": "@harrys_nkpg", "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80" }
     },
     {
         "name": "Pappa Grappa", "city": "Norrköping", "lat": 58.5880, "lon": 16.1888,
@@ -63,8 +76,13 @@ restaurants_config = [
         "type": "static", "url": "https://www.spicyhot.se/menyer/", "menu_selector": "div.menu-section", 
         "static_data": { "address": "Drottninggatan 55", "rating": 4.0, "price": "115:-", "instagram_url": "https://instagram.com/spicyhotsverige", "instagram_handle": "@spicyhotsverige", "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80" }
     },
+    {
+        "name": "Landerholms", "city": "Norrköping", "lat": 58.5875, "lon": 16.1910,
+        "type": "static", "url": "https://landerholmskonditori.se/", "menu_selector": "div.entry-content p",
+        "static_data": { "address": "Hospitalsgatan 5", "rating": 4.7, "price": "119:-", "instagram_url": "https://instagram.com/landerholms", "instagram_handle": "@landerholms", "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" }
+    },
 
-    # ================= LINKÖPING (5 st) =================
+    # ================= LINKÖPING (8 ST) =================
     {
         "name": "Stångs Magasin", "city": "Linköping", "lat": 58.4109, "lon": 15.6265,
         "type": "daily", "url": "https://stangsmagasin.se/lunch/", "menu_selector": "div.entry-content",
@@ -78,20 +96,38 @@ restaurants_config = [
     {
         "name": "Yogi", "city": "Linköping", "lat": 58.4098, "lon": 15.6240,
         "type": "manual", "url": "https://www.yogilinkoping.se", 
-        "manual_menu": ["Chicken Tikka Masala", "Palak Paneer (Veg)", "Lamm Curry", "Dagens Naanbröd"], # Hårdkodad meny för säkerhet
-        "static_data": { "address": "Platensgatan 5", "rating": 4.5, "price": "125:-", "instagram_url": "https://instagram.com/yogilinkoping", "instagram_handle": "@yogilinkoping", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" } # NY BILD
+        "manual_menu": ["Palak Paneer", "Chicken Tikka Masala"],
+        "static_data": { "address": "Platensgatan 5", "rating": 4.5, "price": "125:-", "instagram_url": "https://instagram.com/yogilinkoping", "instagram_handle": "@yogilinkoping", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" }
     },
     {
         "name": "Von Dufva", "city": "Linköping", "lat": 58.4120, "lon": 15.6200,
         "type": "manual", "url": "https://vondufva.se", 
-        "manual_menu": ["Wallenbergare med potatismos", "Pocherad torsk med äggsås", "Dagens Vegetariska"], # Hårdkodad
-        "static_data": { "address": "Gråbrödragatan 1", "rating": 4.4, "price": "135:-", "instagram_url": "https://instagram.com/stadsmissionenscafeer", "instagram_handle": "@stadsmissionen", "image": "https://images.unsplash.com/photo-1560611021-6b7920fa4996?w=600&q=80" } # NY BILD
+        "manual_menu": ["Wallenbergare med potatismos", "Pocherad torsk med äggsås", "Dagens Vegetariska"],
+        # NY BILD HÄR:
+        "static_data": { "address": "Gråbrödragatan 1", "rating": 4.4, "price": "135:-", "instagram_url": "https://instagram.com/stadsmissionenscafeer", "instagram_handle": "@stadsmissionen", "image": "https://images.unsplash.com/photo-1551183053-bf91b1d3116c?w=600&q=80" }
+    },
+    {
+        "name": "Överste Mörner", "city": "Linköping", "lat": 58.4100, "lon": 15.6190,
+        "type": "daily", "url": "https://overstemorner.se/lunch/", "menu_selector": "body",
+        "static_data": { "address": "Stora Torget 9", "rating": 4.1, "price": "149:-", "instagram_url": "https://instagram.com/overstemorner", "instagram_handle": "@overstemorner", "image": "https://images.unsplash.com/photo-1546241072-48010ad2862c?w=600&q=80" }
+    },
+    {
+        "name": "M.O.O", "city": "Linköping", "lat": 58.4115, "lon": 15.6230,
+        "type": "static", "url": "https://moo.se/lunch", "menu_selector": "body",
+        "static_data": { "address": "Ågatan 31", "rating": 4.5, "price": "159:-", "instagram_url": "https://instagram.com/moolinkoping", "instagram_handle": "@moolinkoping", "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" }
+    },
+    {
+        "name": "Olympia", "city": "Linköping", "lat": 58.4090, "lon": 15.6180,
+        "type": "manual", "url": "https://restaurangolympia.se", 
+        "manual_menu": ["Schnitzel", "Veg: Pasta"],
+        "static_data": { "address": "Platensgatan 3", "rating": 4.4, "price": "125:-", "instagram_url": "https://instagram.com/restaurangolympia", "instagram_handle": "@restaurangolympia", "image": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80" }
     },
     {
         "name": "Ingeborgs", "city": "Linköping", "lat": 58.4100, "lon": 15.6225,
         "type": "manual", "url": "https://ingeborgs.se", 
-        "manual_menu": ["Ingeborgs högrevsburgare", "Grillad Levain med kyckling", "Caesarsallad", "Dagens soppa"], # Hårdkodad
-        "static_data": { "address": "Ågatan 35", "rating": 4.3, "price": "135:-", "instagram_url": "https://instagram.com/ingeborgs_linkoping", "instagram_handle": "@ingeborgs_lkpg", "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" } # NY BILD
+        "manual_menu": ["Dagens soppa", "Grillad smörgås"],
+        # NY BILD HÄR:
+        "static_data": { "address": "Ågatan 35", "rating": 4.3, "price": "135:-", "instagram_url": "https://instagram.com/ingeborgs_linkoping", "instagram_handle": "@ingeborgs_lkpg", "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" }
     }
 ]
 
@@ -102,13 +138,18 @@ def clean_text(text):
 def is_valid_dish(line):
     line_lower = line.lower()
     words = line_lower.split()
+    
     if len(words) < 2: return False 
     if re.sub(r'[0-9:kr\-\s]', '', line_lower) == "": return False
+    
     for junk in junk_keywords:
         if junk in line_lower: return False
+    
     if len(line) > 25: return True
+    
     has_food_word = any(word in line_lower for word in food_keywords)
     if has_food_word: return True
+    
     return False
 
 def get_takeaway_price(full_text):
@@ -119,7 +160,7 @@ def get_takeaway_price(full_text):
 def parse_menu_smart(full_text, is_daily=False):
     weekday_index = datetime.datetime.now().weekday()
     today_name = dagar_svenska[weekday_index]
-    if is_daily and weekday_index > 4: return ["Helg! Se a la carte."]
+    if is_daily and weekday_index > 4: return []
     
     lines = [line.strip() for line in full_text.split('\n') if line.strip()]
     daily_dishes = []
@@ -172,7 +213,7 @@ def parse_menu_smart(full_text, is_daily=False):
 def scrape_lunch():
     output_data = []
     headers = {'User-Agent': 'Mozilla/5.0'}
-    print(f"--- Skrapar DagensLunch.se (Topp 10 - Felfri) ---")
+    print(f"--- Skrapar DagensLunch.se (Fixad) ---")
 
     for rest in restaurants_config:
         print(f"Hämtar: {rest['name']} ({rest['city']})...")
@@ -203,7 +244,6 @@ def scrape_lunch():
                 menu_items = parse_menu_smart(full_text, is_daily)
                 takeaway = get_takeaway_price(full_text)
             else:
-                # Fallback om sidan är nere: Visa inte "Kunde inte nå", utan visa tom lista (hanteras i HTML)
                 menu_items = []; takeaway=None
 
             output_data.append({
