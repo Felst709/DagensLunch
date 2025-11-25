@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DagensLunch.se</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        /* Scrollbar-fix */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        
+        /* Karta */
+        #map { height: 250px; width: 100%; z-index: 1; border-radius: 1rem; }
+        
+        .ad-space { 
+            width: 160px; 
+            height: 600px; 
+            background-color: #e5e7eb; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #9ca3af; 
+            font-size: 0.8rem; 
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-orange-100 p-2 rounded-full">
+                    <i class="fa-solid fa-utensils text-orange-500 text-lg"></i>
+                </div>
+                <h1 class="text-lg font-bold tracking-tight">DagensLunch<span class="text-orange-500">.se</span></h1>
+            </div>
+            
+            <div class="text-right">
+                <div class="text-xs font-bold text-orange-500 uppercase tracking-wide" id="week-display">VECKA --</div>
+                <div class="text-sm font-medium text-gray-600 capitalize" id="header-date">Laddar...</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex justify-center gap-6 py-8 px-4">
+        
+        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen">
+            <div class="ad-space mb-4">Annons</div>
+        </aside>
+
+        <div class="w-full max-w-5xl">
+            
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900">Östergötlands Luncher</h2>
+                <p class="text-gray-500 text-sm mt-1">Välj din stad och hitta rätt</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-3 mb-8">
+                <div class="relative md:w-56">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-city text-gray-400"></i>
+                    </div>
+                    <select id="citySelector" class="appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 pl-10 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold cursor-pointer shadow-sm hover:border-gray-300 transition">
+                        <option value="Norrköping">Norrköping</option>
+                        <option value="Linköping">Linköping</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div class="relative flex-grow">
+                    <input type="text" id="searchInput" placeholder="Sök maträtt eller restaurang..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm text-gray-700">
+                    <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-400"></i>
+                </div>
+            </div>
+
+            <div id="restaurant-grid-top" class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
+                <div class="col-span-full text-center py-12">
+                    <i class="fa-solid fa-circle-notch fa-spin text-orange-500 text-3xl"></i>
+                    <p class="text-gray-500 mt-2">Hämtar menyer...</p>
+                </div>
+            </div>
+
+            <div class="mb-8 shadow-lg rounded-2xl border border-gray-200 p-1 bg-white relative group">
+                <div class="absolute top-2 left-2 z-[400] bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold shadow text-gray-700 pointer-events-none">
+                    <i class="fa-solid fa-map-pin text-orange-500 mr-1"></i> Karta
+                </div>
+                <div id="map"></div>
+            </div>
+
+            <div id="restaurant-grid-bottom" class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                </div>
+
+        </div>
+
+        <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen">
+            <div class="ad-space mb-4">Annons</div>
+        </aside>
+    </div>
+
+    <footer class="bg-white border-t border-gray-200 py-12 mt-auto text-center">
+        <div class="container mx-auto px-4">
+            <div class="mb-8">
+                <a href="https://instagram.com/dagenslunch.se" target="_blank" class="inline-flex items-center gap-2 text-pink-600 hover:text-pink-800 transition text-lg font-bold">
+                    <i class="fa-brands fa-instagram text-2xl"></i> Följ oss på Instagram
+                </a>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 max-w-lg mx-auto mb-10 border border-gray-100">
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">För Restauranger</p>
+                <h4 class="text-gray-800 font-bold mb-1">Vill du synas här?</h4>
+                <p class="text-gray-500 text-sm mb-4">Vi hjälper dig att nå ut.</p>
+                <a href="mailto:info@dagenslunch.se" class="inline-flex items-center gap-2 text-orange-600 bg-white border border-gray-200 hover:bg-orange-50 px-5 py-2.5 rounded-full text-sm font-bold transition shadow-sm">
+                    <i class="fa-regular fa-envelope"></i> Kontakta oss
+                </a>
+            </div>
+            <p class="text-gray-400 text-xs">&copy; 2025 DagensLunch.se</p>
+        </div>
+    </footer>
+
+    <script>
+        let allRestaurants = [];
+        let map = null;
+        let markers = [];
+
+        const cityCenters = {
+            "Norrköping": { lat: 58.5877, lon: 16.1924 },
+            "Linköping": { lat: 58.4108, lon: 15.6214 }
+        };
+
+        async function loadLunchData() {
+            try {
+                const response = await fetch('lunch_data.json');
+                const data = await response.json();
+                allRestaurants = data;
+                updateCity();
+            } catch (error) {
+                console.error("Fel:", error);
+                document.getElementById('restaurant-grid-top').innerHTML = '<p class="text-center col-span-full text-red-400">Kunde inte ladda datan.</p>';
+            }
+        }
+
+        function updateCity() {
+            const selectedCity = document.getElementById('citySelector').value;
+            const searchVal = document.getElementById('searchInput').value;
+            filterAndRender(selectedCity, searchVal);
+            initMap(selectedCity, searchVal);
+        }
+
+        document.getElementById('citySelector').addEventListener('change', updateCity);
+        document.getElementById('searchInput').addEventListener('keyup', (e) => {
+            const selectedCity = document.getElementById('citySelector').value;
+            filterAndRender(selectedCity, e.target.value);
+            initMap(selectedCity, e.target.value);
+        });
+
+        function filterAndRender(city, searchString) {
+            const searchLower = searchString.toLowerCase();
+            const filtered = allRestaurants.filter(place => {
+                if (place.city !== city) return false;
+                if (!searchString) return true;
+                const nameMatch = place.name.toLowerCase().includes(searchLower);
+                const foodMatch = place.menu.some(dish => dish.toLowerCase().includes(searchLower));
+                return nameMatch || foodMatch;
+            });
+            renderRestaurants(filtered, city);
+        }
+
+        function getDistance(lat1, lon1, lat2, lon2) {
+            if(!lat1 || !lon1 || !lat2 || !lon2) return "0";
+            const R = 6371; 
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return (R * c).toFixed(1);
+        }
+
+        function renderRestaurants(items, city) {
+            const gridTop = document.getElementById('restaurant-grid-top');
+            const gridBottom = document.getElementById('restaurant-grid-bottom');
+            
+            gridTop.innerHTML = '';
+            gridBottom.innerHTML = '';
+            
+            const center = cityCenters[city] || cityCenters["Norrköping"];
+
+            if (items.length === 0) {
+                gridTop.innerHTML = `
+                    <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100">
+                        <p class="text-gray-400 italic">Inga restauranger hittades i ${city} just nu.</p>
+                    </div>`;
+                return;
+            }
+
+            items.forEach((place, index) => {
+                let menuHtml = '';
+                if (place.menu.length > 0) {
+                    menuHtml = place.menu.map(dish => 
+                        `<li class="mb-1.5 text-gray-600 flex items-start text-xs leading-relaxed">
+                            <span class="text-orange-400 mr-2 mt-1 text-[8px]">●</span>
+                            <span class="flex-1 font-medium">${dish}</span>
+                        </li>`).join('');
+                } else {
+                    menuHtml = `<li class="text-gray-400 italic text-xs pl-1">Se meny på hemsidan</li>`;
+                }
+
+                const instaHandle = place.instagram_handle || "@" + place.name.replace(/\s+/g, '').toLowerCase();
+                const dist = getDistance(center.lat, center.lon, place.lat, place.lon);
+
+                let priceHtml = `<span class="text-lg font-bold text-gray-900">${place.price}</span>`;
+                if (place.takeaway_price) {
+                    priceHtml += `<span class="text-[10px] uppercase font-bold text-gray-500 ml-2 bg-gray-100 px-2 py-1 rounded">Hämt: ${place.takeaway_price}</span>`;
+                }
+
+                const card = `
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition flex flex-row h-48 overflow-hidden relative group">
+                        <div class="w-1/3 relative overflow-hidden">
+                            <img src="${place.image}" alt="${place.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white">
+                                <p class="text-[9px] font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-location-arrow text-orange-400"></i> ${dist} km
+                                </p>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-white/95 backdrop-blur px-1.5 py-0.5 rounded text-[9px] font-bold text-gray-800 shadow-sm">
+                                <i class="fa-solid fa-star text-yellow-400 text-[8px]"></i> ${place.rating}
+                            </div>
+                        </div>
+                        
+                        <div class="w-2/3 p-4 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="overflow-hidden pr-2 w-full">
+                                    <h3 class="text-sm font-bold text-gray-900 leading-tight line-clamp-2" title="${place.name}">${place.name}</h3>
+                                    <p class="text-[10px] text-gray-400 truncate mt-0.5">${place.address}</p>
+                                </div>
+                                
+                                <a href="${place.instagram_url}" target="_blank" class="flex flex-col items-center min-w-[40px] text-pink-600 hover:text-pink-700 transition group/insta">
+                                    <i class="fa-brands fa-instagram text-lg mb-0.5"></i>
+                                    <span class="text-[8px] font-bold text-gray-400 group-hover/insta:text-pink-600 transition truncate w-full text-center">${instaHandle}</span>
+                                </a>
+                            </div>
+
+                            <div class="flex-grow overflow-hidden mb-1">
+                                <ul>${menuHtml}</ul>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-auto pt-2 border-t border-gray-50">
+                                <div class="flex items-center">
+                                    ${priceHtml}
+                                </div>
+                                <a href="${place.url}" target="_blank" class="text-[10px] font-bold text-white bg-gray-900 px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">
+                                    Besök
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                if (index < 4) {
+                    gridTop.innerHTML += card;
+                } else {
+                    gridBottom.innerHTML += card;
+                }
+            });
+        }
+
+        function initMap(city, searchString = "") {
+            const center = cityCenters[city] || cityCenters["Norrköping"];
+            
+            if (map) { map.remove(); map = null; }
+
+            // HÄR ÄR ÄNDRINGEN: scrollWheelZoom: false
+            map = L.map('map', {
+                scrollWheelZoom: false
+            }).setView([center.lat, center.lon], 13);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO'
+            }).addTo(map);
+
+            const searchLower = searchString.toLowerCase();
+            
+            const filtered = allRestaurants.filter(place => {
+                if(place.city !== city) return false;
+                if(!searchString) return true;
+                return place.name.toLowerCase().includes(searchLower) || place.menu.some(d => d.toLowerCase().includes(searchLower));
+            });
+
+            filtered.forEach(place => {
+                L.marker([place.lat, place.lon])
+                    .bindPopup(`
+                        <div class="text-center">
+                            <b class="text-sm">${place.name}</b><br>
+                            <span class="text-xs text-gray-500">${place.address}</span><br>
+                            <a href="${place.url}" target="_blank" class="text-orange-500 text-xs font-bold">Besök</a>
+                        </div>
+                    `)
+                    .addTo(map);
+            });
+        }
+
+        function getWeekNumber(d) {
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            return Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+        }
+
+        const today = new Date();
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('header-date').innerText = today.toLocaleDateString('sv-SE', dateOptions).toUpperCase();
+        document.getElementById('week-display').innerText = "VECKA " + getWeekNumber(today);
+
+        loadLunchData();
+    </script>
+</body>
+</html>

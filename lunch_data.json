@@ -1,0 +1,175 @@
+[
+    {
+        "name": "Enoteket",
+        "city": "Norrköping",
+        "lat": 58.5885,
+        "lon": 16.1885,
+        "url": "https://www.enoteket.se/meny/lunch/",
+        "menu": [],
+        "takeaway_price": null,
+        "address": "Laxholmen",
+        "rating": 4.6,
+        "price": "135:-",
+        "instagram_url": "https://instagram.com/enoteket",
+        "instagram_handle": "@enoteket",
+        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80"
+    },
+    {
+        "name": "Östgöta Kök",
+        "city": "Norrköping",
+        "lat": 58.5925,
+        "lon": 16.189,
+        "url": "https://norrkoping.ostgotakok.se/lunchmeny/",
+        "menu": [],
+        "takeaway_price": null,
+        "address": "Nya Torget",
+        "rating": 4.5,
+        "price": "145:-",
+        "instagram_url": "https://instagram.com/ostgotakok",
+        "instagram_handle": "@ostgotakok",
+        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80"
+    },
+    {
+        "name": "Pappa Grappa",
+        "city": "Norrköping",
+        "lat": 58.588,
+        "lon": 16.1888,
+        "url": "https://www.pappagrappa.se/norrkoping/meny/",
+        "menu": [
+            "189,-  vår egen mustiga variant av klassikern, vi serverar mafaldine med köttfärssås, pasta,  parmesan & persilja"
+        ],
+        "takeaway_price": null,
+        "address": "Gamla Torget",
+        "rating": 4.2,
+        "price": "139:-",
+        "instagram_url": "https://instagram.com/pappagrappa",
+        "instagram_handle": "@pappagrappa",
+        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80"
+    },
+    {
+        "name": "Brödernas",
+        "city": "Norrköping",
+        "lat": 58.5895,
+        "lon": 16.1895,
+        "url": "https://www.brodernas.nu/meny",
+        "menu": [],
+        "takeaway_price": null,
+        "address": "Gamla Rådstugugatan 28",
+        "rating": 4.3,
+        "price": "129:-",
+        "instagram_url": "https://instagram.com/brodernas",
+        "instagram_handle": "@brodernas",
+        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80"
+    },
+    {
+        "name": "Spicy Hot",
+        "city": "Norrköping",
+        "lat": 58.5882,
+        "lon": 16.189,
+        "url": "https://www.spicyhot.se/menyer/",
+        "menu": [
+            "Känn dofterna, hör fräsandet i våra wokpannor, se aktiviteten i köket och smaka hela skillnaden.",
+            "Nr 1. Panang Curry med kyckling",
+            "Kycklingfilé i panangcurry med paprika, bambuskott och ris.",
+            "Allergener: kräftdjur, fisk, sojabönor och koriander. Övrigt: innehåller vitlök."
+        ],
+        "takeaway_price": null,
+        "address": "Drottninggatan 55",
+        "rating": 4.0,
+        "price": "115:-",
+        "instagram_url": "https://instagram.com/spicyhotsverige",
+        "instagram_handle": "@spicyhotsverige",
+        "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80"
+    },
+    {
+        "name": "Stångs Magasin",
+        "city": "Linköping",
+        "lat": 58.4109,
+        "lon": 15.6265,
+        "url": "https://stangsmagasin.se/lunch/",
+        "menu": [],
+        "takeaway_price": null,
+        "address": "Södra Stånggatan 1",
+        "rating": 4.7,
+        "price": "155:-",
+        "instagram_url": "https://instagram.com/stangsmagasin",
+        "instagram_handle": "@stangsmagasin",
+        "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80"
+    },
+    {
+        "name": "Pappa Grappa Lkpg",
+        "city": "Linköping",
+        "lat": 58.4105,
+        "lon": 15.6215,
+        "url": "https://www.pappagrappa.se/linkoping/meny/",
+        "menu": [
+            "189,-  vår egen mustiga variant av klassikern, vi serverar mafaldine med köttfärssås, pasta,  parmesan & persilja"
+        ],
+        "takeaway_price": null,
+        "address": "Ågatan 43",
+        "rating": 4.3,
+        "price": "139:-",
+        "instagram_url": "https://instagram.com/pappagrappa",
+        "instagram_handle": "@pappagrappa",
+        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80"
+    },
+    {
+        "name": "Yogi",
+        "city": "Linköping",
+        "lat": 58.4098,
+        "lon": 15.624,
+        "url": "https://www.yogilinkoping.se",
+        "menu": [
+            "Chicken Tikka Masala",
+            "Palak Paneer (Veg)",
+            "Lamm Curry",
+            "Dagens Naanbröd"
+        ],
+        "takeaway_price": null,
+        "address": "Platensgatan 5",
+        "rating": 4.5,
+        "price": "125:-",
+        "instagram_url": "https://instagram.com/yogilinkoping",
+        "instagram_handle": "@yogilinkoping",
+        "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80"
+    },
+    {
+        "name": "Von Dufva",
+        "city": "Linköping",
+        "lat": 58.412,
+        "lon": 15.62,
+        "url": "https://vondufva.se",
+        "menu": [
+            "Wallenbergare med potatismos",
+            "Pocherad torsk med äggsås",
+            "Dagens Vegetariska"
+        ],
+        "takeaway_price": null,
+        "address": "Gråbrödragatan 1",
+        "rating": 4.4,
+        "price": "135:-",
+        "instagram_url": "https://instagram.com/stadsmissionenscafeer",
+        "instagram_handle": "@stadsmissionen",
+        "image": "https://images.unsplash.com/photo-1560611021-6b7920fa4996?w=600&q=80"
+    },
+    {
+        "name": "Ingeborgs",
+        "city": "Linköping",
+        "lat": 58.41,
+        "lon": 15.6225,
+        "url": "https://ingeborgs.se",
+        "menu": [
+            "Ingeborgs högrevsburgare",
+            "Grillad Levain med kyckling",
+            "Caesarsallad",
+            "Dagens soppa"
+        ],
+        "takeaway_price": null,
+        "address": "Ågatan 35",
+        "rating": 4.3,
+        "price": "135:-",
+        "instagram_url": "https://instagram.com/ingeborgs_linkoping",
+        "instagram_handle": "@ingeborgs_lkpg",
+        "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80"
+    }
+]
