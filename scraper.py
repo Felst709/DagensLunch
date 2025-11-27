@@ -23,7 +23,7 @@ restaurants = [
         "name": "Östgöta Kök", 
         "city": "Norrköping", 
         "lat": 58.5925, "lon": 16.1890,
-        "price": "135:- - 155:-",
+        "price": "149:- (11.30-13.00) - 119:- (13.00.14.00)",
         "category": "Modern Husman",
         "description": "Vällagad lunch med fokus på närproducerat. Stor salladsbuffé och kaffe ingår.",
         "url": "https://norrkoping.ostgotakok.se/lunchmeny/", 
