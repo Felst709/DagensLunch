@@ -4,62 +4,69 @@
         "city": "Norrköping",
         "lat": 58.5885,
         "lon": 16.1885,
-        "price": "137:-",
+        "url": "https://www.enoteket.se/meny/lunch/",
+        "menu": [],
+        "price": "125:- - 145:-",
         "category": [
             "Husmanskost",
             "Salladsbuffé"
         ],
-        "description": "Stor lunchbuffé med sallad, soppa och hembakat bröd. Välj mellan Dagens pasta, soppa och varmrätter.",
-        "url": "https://www.enoteket.se/meny/lunch/",
+        "address": "Laxholmen",
+        "rating": 4.6,
         "instagram_url": "https://instagram.com/enoteket",
         "instagram_handle": "@enoteket",
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80",
-        "address": "Laxholmen",
-        "rating": 4.6
+        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80"
     },
     {
         "name": "Östgöta Kök",
         "city": "Norrköping",
         "lat": 58.5925,
         "lon": 16.189,
-        "price": "149:-",
+        "url": "https://norrkoping.ostgotakok.se/lunchmeny/",
+        "menu": [],
+        "price": "135:- - 155:-",
         "category": [
             "Premium Husman",
             "Salladsbuffé"
         ],
-        "description": "Vällagad lunch med fokus på närproducerat. Stor salladsbuffé och kaffe ingår.",
-        "url": "https://norrkoping.ostgotakok.se/lunchmeny/",
+        "address": "Nya Torget",
+        "rating": 4.5,
         "instagram_url": "https://instagram.com/ostgotakok",
         "instagram_handle": "@ostgotakok",
-        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80",
-        "address": "Nya Torget",
-        "rating": 4.5
+        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80"
     },
     {
         "name": "Louis De Geer",
         "city": "Norrköping",
         "lat": 58.589,
         "lon": 16.184,
+        "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
+        "menu": [
+            "Svampfylld köttfärslimpa med äpple, dragon och gelé",
+            "Veckans vegetariska",
+            "Tortellini med ricotta och spenat",
+            "Veckans soppa"
+        ],
         "price": "135:-",
         "category": [
             "Husmanskost",
             "Salladsbuffé",
             "Lunchhäfte"
         ],
-        "description": "Klassisk husmanskost i fin miljö. Salladsbuffé, måltidsdryck och kaffe ingår.",
-        "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
+        "address": "Dalsgatan 15",
+        "rating": 4.4,
         "instagram_url": "https://instagram.com/louisdegeerkonsertkongress",
         "instagram_handle": "@louisdegeer",
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-        "address": "Dalsgatan 15",
-        "rating": 4.4
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
     },
     {
         "name": "Harrys",
         "city": "Norrköping",
         "lat": 58.5878,
         "lon": 16.192,
-        "price": "159:-",
+        "url": "https://harrys.se/sv-se/norrkoeping/menu/aw-shoppinglunch/",
+        "menu": [],
+        "price": "129:-",
         "category": [
             "Kött",
             "Fisk",
@@ -67,152 +74,170 @@
             "Salladsbuffé",
             "AW"
         ],
-        "description": "Alltid en kött, en fisk och en vegetarisk rätt. Salladsbuffé och kaffe på maten.",
-        "url": "https://harrys.se/sv-se/norrkoeping/menu/aw-shoppinglunch/",
+        "address": "Drottninggatan 1",
+        "rating": 4.1,
         "instagram_url": "https://instagram.com/harrysnorrkoping",
         "instagram_handle": "@harrys_nkpg",
-        "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80",
-        "address": "Drottninggatan 1",
-        "rating": 4.1
+        "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80"
     },
     {
         "name": "Pappa Grappa",
         "city": "Norrköping",
         "lat": 58.588,
         "lon": 16.1888,
+        "url": "https://www.pappagrappa.se/norrkoping/meny/",
+        "menu": [],
         "price": "129:- - 149:-",
         "category": [
             "Pizza",
             "Pasta",
             "AW"
         ],
-        "description": "Pizza, pasta och italienska varmrätter. En härlig atmosfär vid Gamla Torget.",
-        "url": "https://www.pappagrappa.se/norrkoping/meny/",
+        "address": "Gamla Torget",
+        "rating": 4.2,
         "instagram_url": "https://instagram.com/pappagrappa",
         "instagram_handle": "@pappagrappa",
-        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80",
-        "address": "Gamla Torget",
-        "rating": 4.2
+        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80"
     },
     {
         "name": "Brödernas",
         "city": "Norrköping",
         "lat": 58.5895,
         "lon": 16.1895,
+        "url": "https://www.brodernas.nu/meny",
+        "menu": [],
         "price": "115:- - 135:-",
         "category": [
             "Hamburgare",
             "Sallad"
         ],
-        "description": "Grymma hamburgare och sallader. Dagens lunch inkluderar ofta sides och dryck.",
-        "url": "https://www.brodernas.nu/meny",
+        "address": "Gamla Rådstugugatan 28",
+        "rating": 4.3,
         "instagram_url": "https://instagram.com/brodernas",
         "instagram_handle": "@brodernas",
-        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80",
-        "address": "Gamla Rådstugugatan 28",
-        "rating": 4.3
+        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80"
     },
     {
         "name": "Spicy Hot",
         "city": "Norrköping",
         "lat": 58.5882,
         "lon": 16.189,
+        "url": "https://www.spicyhot.se/menyer/",
+        "menu": [
+            "Känn dofterna, hör fräsandet i våra wokpannor, se aktiviteten i köket och smaka hela skillnaden.",
+            "Nr 1. Panang Curry med kyckling",
+            "Kycklingfilé i panangcurry med paprika, bambuskott och ris.",
+            "Allergener: kräftdjur, fisk, sojabönor och koriander. Övrigt: innehåller vitlök."
+        ],
         "price": "105:- - 125:-",
         "category": [
             "Asiatiskt",
             "Wok",
             "Curry"
         ],
-        "description": "Klassiska asiatiska rätter. Välj mellan wok, curry, och friterat. Snabb servering.",
-        "url": "https://www.spicyhot.se/menyer/",
+        "address": "Drottninggatan 55",
+        "rating": 4.0,
         "instagram_url": "https://instagram.com/spicyhotsverige",
         "instagram_handle": "@spicyhotsverige",
-        "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80",
-        "address": "Drottninggatan 55",
-        "rating": 4.0
+        "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80"
     },
     {
         "name": "Landerholms",
         "city": "Norrköping",
         "lat": 58.5875,
         "lon": 16.191,
+        "url": "https://landerholmskonditori.se/",
+        "menu": [
+            "Landerholms - bröd­kultur sedan 1954",
+            "Bageri, konditori och brödkultur i Norrköping sedan 1954.",
+            "Välkommen till Landerholms-familjen! Vi har försett Norrköping med nygräddat bröd, fantastiskt fika och kulinariska lunchupplevelser i över sju decennier.",
+            "Tomatsås, fior di latte, prosciutto, Grana Pandano"
+        ],
         "price": "119:-",
         "category": [
             "Husmanskost",
             "Klassiker"
         ],
-        "description": "Vällagad husmanskost i klassisk miljö. Alltid dagens rätt och veckans alternativ.",
-        "url": "https://landerholmskonditori.se/",
+        "address": "Hospitalsgatan 5",
+        "rating": 4.7,
         "instagram_url": "https://instagram.com/landerholms",
         "instagram_handle": "@landerholms",
-        "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80",
-        "address": "Hospitalsgatan 5",
-        "rating": 4.7
+        "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80"
     },
     {
         "name": "Stångs Magasin",
         "city": "Linköping",
         "lat": 58.4109,
         "lon": 15.6265,
+        "url": "https://stangsmagasin.se/lunch/",
+        "menu": [],
         "price": "145:- - 165:-",
         "category": [
             "Premium Husman",
             "Salladsbuffé",
             "Kravmärkt"
         ],
-        "description": "Kravmärkt och närodlat i fantastisk miljö vid ån. Inklusive sallad och kaffe.",
-        "url": "https://stangsmagasin.se/lunch/",
+        "address": "Södra Stånggatan 1",
+        "rating": 4.7,
         "instagram_url": "https://instagram.com/stangsmagasin",
         "instagram_handle": "@stangsmagasin",
-        "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
-        "address": "Södra Stånggatan 1",
-        "rating": 4.7
+        "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80"
     },
     {
         "name": "Pappa Grappa",
         "city": "Linköping",
         "lat": 58.4105,
         "lon": 15.6215,
+        "url": "https://www.pappagrappa.se/linkoping/meny/",
+        "menu": [],
         "price": "129:- - 149:-",
         "category": [
             "Italienskt",
             "Pizza",
             "Pasta",
-            "Sallad",
             "Buffé"
         ],
-        "description": "Italiensk lunchbuffé och à la carte. Pizza, pasta och sallader i toppklass.",
-        "url": "https://www.pappagrappa.se/linkoping/meny/",
+        "address": "Ågatan 43",
+        "rating": 4.3,
         "instagram_url": "https://instagram.com/pappagrappa",
         "instagram_handle": "@pappagrappa",
-        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80",
-        "address": "Ågatan 43",
-        "rating": 4.3
+        "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80"
     },
     {
         "name": "Yogi",
         "city": "Linköping",
         "lat": 58.4098,
         "lon": 15.624,
+        "url": "https://restaurangyogi.com/lunch",
+        "menu": [
+            "Chicken Tikka Masala",
+            "Palak Paneer (Veg)",
+            "Lamm Curry",
+            "Dagens Naanbröd"
+        ],
         "price": "139:-",
         "category": [
             "Indiskt",
             "Husmanskost",
             "Sallad"
         ],
-        "description": "Autentisk indisk mat. Spännande husmanskost. Ris och sallad ingår alltid.",
-        "url": "https://restaurangyogi.com/lunch",
+        "address": "Platensgatan 5",
+        "rating": 4.5,
         "instagram_url": "https://instagram.com/yogilinkoping",
         "instagram_handle": "@yogilinkoping",
-        "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80",
-        "address": "Platensgatan 5",
-        "rating": 4.5
+        "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80"
     },
     {
         "name": "Von Dufva",
         "city": "Linköping",
         "lat": 58.412,
         "lon": 15.62,
+        "url": "https://stadsmissionenost.se/restaurang-von-dufva/lunch",
+        "menu": [
+            "Kött: Pannbiff med stekt lök",
+            "Fisk: Panerad spätta",
+            "Veg: Morotsbiffar"
+        ],
         "price": "138:-",
         "category": [
             "Husmanskost",
@@ -220,91 +245,99 @@
             "Fisk",
             "Vegetariskt"
         ],
-        "description": "God mat som gör gott. Drivs av Stadsmissionen. Alltid kött, fisk och vegetariskt.",
-        "url": "https://stadsmissionenost.se/restaurang-von-dufva/lunch",
+        "address": "Gråbrödragatan 1",
+        "rating": 4.4,
         "instagram_url": "https://instagram.com/stadsmissionenscafeer",
         "instagram_handle": "@stadsmissionen",
-        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80",
-        "address": "Gråbrödragatan 1",
-        "rating": 4.4
+        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80"
     },
     {
         "name": "Ingeborgs",
         "city": "Linköping",
         "lat": 58.41,
         "lon": 15.6225,
+        "url": "https://www.ingeborgsiorebro.se/lunch",
+        "menu": [
+            "Grillad Levain med kyckling",
+            "Ingeborgs högrevsburgare",
+            "Dagens Värmande Soppa"
+        ],
         "price": "135:-",
         "category": [
             "Bageri",
             "Bistro",
             "Soppa",
-            "Sallad",
-            "Smörgås"
+            "Sallad"
         ],
-        "description": "Hantverksbageri som serverar soppor, grillade smörgåsar och sallader.",
-        "url": "https://www.ingeborgsiorebro.se/lunch",
+        "address": "Ågatan 35",
+        "rating": 4.3,
         "instagram_url": "https://instagram.com/ingeborgs_linkoping",
         "instagram_handle": "@ingeborgs_lkpg",
-        "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80",
-        "address": "Ågatan 35",
-        "rating": 4.3
+        "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80"
     },
     {
         "name": "Cioccolata",
         "city": "Linköping",
         "lat": 58.411,
         "lon": 15.622,
+        "url": "https://cioccolata.se",
+        "menu": [
+            "Husets Lasagne",
+            "Krämig Oxfilépasta",
+            "Caesarsallad"
+        ],
         "price": "129:- - 145:-",
         "category": [
             "Italienskt",
             "Bistro",
             "Pasta",
-            "Lasagne",
-            "Sallad"
+            "Lasagne"
         ],
-        "description": "Mysig bistro med pasta, lasagne och fräscha sallader.",
-        "url": "https://cioccolata.se",
+        "address": "Ågatan 39",
+        "rating": 4.2,
         "instagram_url": "https://instagram.com/cioccolatabistro",
         "instagram_handle": "@cioccolatabistro",
-        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80",
-        "address": "Ågatan 39",
-        "rating": 4.2
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80"
     },
     {
         "name": "Olympia",
         "city": "Linköping",
         "lat": 58.409,
         "lon": 15.618,
+        "url": "https://restaurangolympia.se",
+        "menu": [
+            "Klassisk Schnitzel med bearnaise",
+            "Husets Panerade Fisk",
+            "Dagens Vegetariska"
+        ],
         "price": "125:-",
         "category": [
             "Klassisk Husmanskost",
             "Schnitzel"
         ],
-        "description": "Klassisk schnitzel, plankstek och husmanskost i generösa portioner.",
-        "url": "https://restaurangolympia.se",
+        "address": "Platensgatan 3",
+        "rating": 4.4,
         "instagram_url": "https://instagram.com/restaurangolympia",
         "instagram_handle": "@restaurangolympia",
-        "image": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80",
-        "address": "Platensgatan 3",
-        "rating": 4.4
+        "image": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80"
     },
     {
         "name": "M.O.O",
         "city": "Linköping",
         "lat": 58.4115,
         "lon": 15.623,
+        "url": "https://moo.se/lunch",
+        "menu": [],
         "price": "149:- - 169:-",
         "category": [
             "Premium",
             "Hamburgare",
             "Steakhouse"
         ],
-        "description": "Kvalitetskött och burgare. En lite lyxigare lunchupplevelse mitt i stan.",
-        "url": "https://moo.se/lunch",
+        "address": "Ågatan 31",
+        "rating": 4.5,
         "instagram_url": "https://instagram.com/moolinkoping",
         "instagram_handle": "@moolinkoping",
-        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80",
-        "address": "Ågatan 31",
-        "rating": 4.5
+        "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80"
     }
 ]
