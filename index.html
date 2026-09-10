@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="relative flex-grow">
-                    <input type="text" id="searchInput" placeholder="Sök restaurang eller kök (t.ex. vegetariskt)..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm text-gray-700">
+                    <input type="text" id="searchInput" placeholder="Sök maträtt eller restaurang..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm text-gray-700">
                     <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-400"></i>
                 </div>
             </div>
@@ -76,29 +76,9 @@
         <aside class="hidden xl:block w-[160px] flex-shrink-0 sticky top-24 h-screen"><div class="ad-space mb-4">Annons</div></aside>
     </div>
 
-    <footer class="bg-white border-t border-gray-200 py-12 mt-auto text-center">
-        <div class="container mx-auto px-4">
-            <div class="mb-8">
-                <a href="https://instagram.com/dagenslunch.se" target="_blank" class="inline-flex items-center gap-2 text-pink-600 hover:text-pink-800 transition text-lg font-bold">
-                    <i class="fa-brands fa-instagram text-2xl"></i> Följ oss på Instagram
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-6 max-w-lg mx-auto mb-10 border border-gray-100">
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">För Restauranger</p>
-                <h4 class="text-gray-800 font-bold mb-1">Vill du synas här?</h4>
-                <p class="text-gray-500 text-sm mb-4">Vi hjälper dig att nå ut.</p>
-                <a href="mailto:info@dagenslunch.se" class="inline-flex items-center gap-2 text-orange-600 bg-white border border-gray-200 hover:bg-orange-50 px-5 py-2.5 rounded-full text-sm font-bold transition shadow-sm">
-                    <i class="fa-regular fa-envelope"></i> Kontakta oss
-                </a>
-            </div>
-            <p class="text-gray-400 text-xs">&copy; 2025 DagensLunch</p>
-        </div>
-    </footer>
-
     <script>
         let allRestaurants = [];
         let map = null;
-        let markers = [];
 
         const cityCenters = {
             "Norrköping": { lat: 58.5877, lon: 16.1924 },
@@ -108,8 +88,7 @@
         async function loadLunchData() {
             try {
                 const response = await fetch('lunch_data.json');
-                const data = await response.json();
-                allRestaurants = data;
+                allRestaurants = await response.json();
                 updateCity();
             } catch (error) {
                 console.error("Fel:", error);
@@ -117,163 +96,98 @@
         }
 
         function updateCity() {
-            const selectedCity = document.getElementById('citySelector').value;
-            const searchVal = document.getElementById('searchInput').value;
-            filterAndRender(selectedCity, searchVal);
-            initMap(selectedCity, searchVal);
+            const city = document.getElementById('citySelector').value;
+            const search = document.getElementById('searchInput').value;
+            filterAndRender(city, search);
+            initMap(city, search);
         }
 
         document.getElementById('citySelector').addEventListener('change', updateCity);
-        document.getElementById('searchInput').addEventListener('keyup', (e) => {
-            const selectedCity = document.getElementById('citySelector').value;
-            filterAndRender(selectedCity, e.target.value);
-            initMap(selectedCity, e.target.value);
-        });
+        document.getElementById('searchInput').addEventListener('keyup', updateCity);
 
         function filterAndRender(city, searchString) {
             const searchLower = searchString.toLowerCase();
             const filtered = allRestaurants.filter(place => {
                 if (place.city !== city) return false;
                 if (!searchString) return true;
-                
                 const nameMatch = place.name.toLowerCase().includes(searchLower);
-                
-                // Sök i kategorier (som nu är en array)
-                const catMatch = Array.isArray(place.category) 
-                    ? place.category.some(c => c.toLowerCase().includes(searchLower))
-                    : place.category.toLowerCase().includes(searchLower);
-                    
-                return nameMatch || catMatch;
+                const dishMatch = place.menu && place.menu.some(dish => dish.toLowerCase().includes(searchLower));
+                const catMatch = place.category && place.category.some(c => c.toLowerCase().includes(searchLower));
+                return nameMatch || dishMatch || catMatch;
             });
             renderRestaurants(filtered, city);
-        }
-
-        function getDistance(lat1, lon1, lat2, lon2) {
-            if(!lat1 || !lon1 || !lat2 || !lon2) return "0";
-            const R = 6371; 
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLon = (lon2 - lon1) * Math.PI / 180;
-            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                      Math.sin(dLon/2) * Math.sin(dLon/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            return (R * c).toFixed(1);
         }
 
         function renderRestaurants(items, city) {
             const gridTop = document.getElementById('restaurant-grid-top');
             const gridBottom = document.getElementById('restaurant-grid-bottom');
             gridTop.innerHTML = ''; gridBottom.innerHTML = '';
-            
-            const center = cityCenters[city] || cityCenters["Norrköping"];
-
-            if (items.length === 0) {
-                gridTop.innerHTML = `<div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100"><p class="text-gray-400 italic">Inga restauranger hittades.</p></div>`;
-                return;
-            }
+            const center = cityCenters[city];
 
             items.forEach((place, index) => {
-                const dist = getDistance(center.lat, center.lon, place.lat, place.lon);
+                let categoriesHtml = (place.category || []).map(cat => 
+                    `<span class="inline-block bg-orange-50 text-orange-700 text-[9px] font-bold px-2 py-0.5 rounded-full border border-orange-100 mr-1 mb-1">${cat}</span>`
+                ).join('');
 
-                // --- HÄR ÄR MAGIN FÖR BUBBLORNA ---
-                // Vi loopar igenom category-listan och skapar en <span> för varje ord
-                let categoriesHtml = '';
-                if (Array.isArray(place.category)) {
-                    categoriesHtml = place.category.map(cat => 
-                        `<span class="inline-block bg-orange-50 text-orange-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-orange-100 mr-1 mb-1">${cat}</span>`
-                    ).join('');
+                let menuHtml = '';
+                if (place.menu && place.menu.length > 0) {
+                    menuHtml = place.menu.map(dish => `<li class="mb-1 text-gray-600 text-xs leading-tight truncate pr-2"><span class="text-orange-400 mr-1 text-[8px]">●</span> ${dish}</li>`).join('');
                 } else {
-                    // Fallback om du glömt [] i python (hanterar gammal sträng)
-                    categoriesHtml = `<span class="inline-block bg-orange-50 text-orange-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-orange-100 mr-1 mb-1">${place.category}</span>`;
+                    menuHtml = `<li class="text-gray-400 italic text-xs pl-1">Se meny på hemsidan</li>`;
                 }
 
                 const card = `
                     <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition flex flex-row h-48 overflow-hidden relative group">
-                        <div class="w-1/3 relative overflow-hidden">
-                            <img src="${place.image}" alt="${place.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white">
-                                <p class="text-[9px] font-bold flex items-center gap-1">
-                                    <i class="fa-solid fa-location-arrow text-orange-400"></i> ${dist} km
-                                </p>
-                            </div>
+                        <div class="w-1/3 relative overflow-hidden flex-shrink-0">
+                            <img src="${place.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                             <div class="absolute top-2 left-2 bg-white/95 backdrop-blur px-1.5 py-0.5 rounded text-[9px] font-bold text-gray-800 shadow-sm">
                                 <i class="fa-solid fa-star text-yellow-400 text-[8px]"></i> ${place.rating}
                             </div>
                         </div>
                         
-                        <div class="w-2/3 p-4 flex flex-col justify-between">
-                            <div>
+                        <div class="w-2/3 p-4 flex flex-col justify-between overflow-hidden">
+                            <div class="overflow-hidden">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="text-base font-bold text-gray-900 leading-tight line-clamp-1" title="${place.name}">${place.name}</h3>
-                                    <a href="${place.instagram_url}" target="_blank" class="text-pink-600 hover:text-pink-700">
-                                        <i class="fa-brands fa-instagram text-lg"></i>
-                                    </a>
+                                    <h3 class="text-sm font-bold text-gray-900 truncate" title="${place.name}">${place.name}</h3>
+                                    <a href="${place.instagram_url}" target="_blank" class="text-pink-600 hover:text-pink-700 ml-2 flex-shrink-0"><i class="fa-brands fa-instagram text-lg"></i></a>
                                 </div>
-                                
-                                <div class="mb-2 flex flex-wrap">
-                                    ${categoriesHtml}
-                                </div>
-
-                                <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">
-                                    ${place.description}
-                                </p>
+                                <div class="mb-2 flex flex-wrap h-5 overflow-hidden">${categoriesHtml}</div>
+                                <ul class="overflow-hidden h-16">${menuHtml}</ul>
                             </div>
 
-                            <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                            <div class="flex justify-between items-center pt-2 border-t border-gray-50 mt-auto">
                                 <div class="flex flex-col">
-                                    <span class="text-[10px] text-gray-400 font-medium">Dagens Lunch</span>
                                     <span class="text-lg font-bold text-gray-900">${place.price}</span>
                                 </div>
-                                <a href="${place.url}" target="_blank" class="text-xs font-bold text-white bg-gray-900 px-4 py-2 rounded-lg hover:bg-orange-500 transition shadow-sm">
-                                    Se meny
-                                </a>
+                                <a href="${place.url}" target="_blank" class="text-[10px] font-bold text-white bg-gray-900 px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">Se meny</a>
                             </div>
                         </div>
                     </div>
                 `;
-
                 if (index < 4) gridTop.innerHTML += card;
                 else gridBottom.innerHTML += card;
             });
         }
 
         function initMap(city, searchString = "") {
-            const center = cityCenters[city] || cityCenters["Norrköping"];
+            const center = cityCenters[city];
             if (map) { map.remove(); map = null; }
             map = L.map('map', { scrollWheelZoom: false }).setView([center.lat, center.lon], 13);
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(map);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
             
             const searchLower = searchString.toLowerCase();
-            const filtered = allRestaurants.filter(place => {
-                if(place.city !== city) return false;
-                if(!searchString) return true;
-                const nameMatch = place.name.toLowerCase().includes(searchLower);
-                // Sök även i kategori-listan
-                const catMatch = Array.isArray(place.category) 
-                    ? place.category.some(c => c.toLowerCase().includes(searchLower))
-                    : place.category.toLowerCase().includes(searchLower);
-                return nameMatch || catMatch;
+            allRestaurants.filter(place => place.city === city && (!searchString || place.name.toLowerCase().includes(searchLower) || (place.menu && place.menu.some(d => d.toLowerCase().includes(searchLower))))).forEach(place => {
+                L.marker([place.lat, place.lon]).bindPopup(`<div class="text-center"><b class="text-sm">${place.name}</b></div>`).addTo(map);
             });
-
-            filtered.forEach(place => {
-                L.marker([place.lat, place.lon]).bindPopup(`<div class="text-center"><b class="text-sm">${place.name}</b><br><span class="text-xs text-gray-500">${place.address}</span></div>`).addTo(map);
-            });
-        }
-
-        function getWeekNumber(d) {
-            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
-            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-            return Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
         }
 
         const today = new Date();
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('header-date').innerText = today.toLocaleDateString('sv-SE', dateOptions).toUpperCase();
-        document.getElementById('week-display').innerText = "VECKA " + getWeekNumber(today);
+        document.getElementById('header-date').innerText = today.toLocaleDateString('sv-SE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+        const d = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+        document.getElementById('week-display').innerText = "VECKA " + Math.ceil((((d - new Date(Date.UTC(d.getUTCFullYear(),0,1))) / 86400000) + 1)/7);
 
         loadLunchData();
     </script>
 </body>
 </html>
- 
