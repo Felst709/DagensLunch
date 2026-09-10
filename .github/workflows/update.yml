@@ -1,11 +1,10 @@
-name: Uppdatera vid ändring
+name: Hämta Luncher
 
 on:
-  # Körs varje gång du sparar en ändring i filerna
-  push:
-    branches:
-      - main
-  # Gör att du kan köra den manuellt också
+  schedule:
+    # Körs klockan 06:00 UTC varje morgon (kl 07:00 / 08:00 svensk tid)
+    - cron: '0 6 * * *'
+  # Gör att du kan starta den manuellt för att testa direkt
   workflow_dispatch:
 
 permissions:
@@ -16,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hämta koden
+      - name: Hämta din kod
         uses: actions/checkout@v4
 
       - name: Installera Python
@@ -24,23 +23,16 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Vi behöver inga externa bibliotek för din nya scraper (bara json/re som ingår)
-      # Men vi installerar requests/bs4 ifall du vill använda dem senare.
-      - name: Installera verktyg
+      - name: Installera verktyg (requests & bs4)
         run: pip install requests beautifulsoup4
 
-      - name: Kör scraper.py (Skapa ny JSON)
+      - name: Kör roboten
         run: python scraper.py
 
-      - name: Spara ändringarna till GitHub
+      - name: Spara den nya menyn
         run: |
           git config --global user.name "Lunch-Robot"
           git config --global user.email "robot@lunchkollen.se"
-          # Kolla om lunch_data.json har ändrats av skriptet
-          if [[ -n $(git status -s lunch_data.json) ]]; then
-            git add lunch_data.json
-            git commit -m "Uppdaterade priser/meny automatiskt"
-            git push
-          else
-            echo "Inga ändringar behövdes."
-          fi
+          git add lunch_data.json
+          git commit -m "Uppdaterade dagens maträtter" || exit 0
+          git push
