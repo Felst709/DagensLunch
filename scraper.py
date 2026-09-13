@@ -11,14 +11,14 @@ weekly_keywords = ["veckans pasta", "veckans soppa", "veckans vegetariska", "vec
 junk_keywords = ["copyright", "boka", "ring", "mail", "följ oss", "öppettider", "stängt", "allergier", "inkl", "gäller", "kontantfri", "se meny på hemsidan"]
 food_keywords = ["färs", "biff", "kyckling", "fisk", "torsk", "lax", "vegetarisk", "veg", "halloumi", "pasta", "soppa", "sallad", "lasagne", "gryta", "schnitzel", "burgare", "pizza"]
 
-# --- DATABASEN (Kategorier & Prisintervall + Skrap-länkar) ---
+# --- DATABASEN (Kategorier & Reservpriser + Skrap-länkar) ---
 restaurants_config = [
     # ================= NORRKÖPING (8 st) =================
     {
         "name": "Enoteket", "city": "Norrköping", "lat": 58.5885, "lon": 16.1885,
         "type": "daily", "url": "https://www.enoteket.se/meny/lunch/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "125:- - 145:-", "category": ["Husmanskost", "Salladsbuffé"],
+            "price": "135:-", "category": ["Husmanskost", "Salladsbuffé"],
             "address": "Laxholmen", "rating": 4.6, 
             "instagram_url": "https://instagram.com/enoteket", "instagram_handle": "@enoteket", 
             "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" 
@@ -28,7 +28,7 @@ restaurants_config = [
         "name": "Östgöta Kök", "city": "Norrköping", "lat": 58.5925, "lon": 16.1890,
         "type": "daily", "url": "https://norrkoping.ostgotakok.se/lunchmeny/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "135:- - 155:-", "category": ["Premium Husman", "Salladsbuffé"],
+            "price": "145:-", "category": ["Premium Husman", "Salladsbuffé"],
             "address": "Nya Torget", "rating": 4.5, 
             "instagram_url": "https://instagram.com/ostgotakok", "instagram_handle": "@ostgotakok", 
             "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" 
@@ -58,7 +58,7 @@ restaurants_config = [
         "name": "Pappa Grappa", "city": "Norrköping", "lat": 58.5880, "lon": 16.1888,
         "type": "daily", "url": "https://www.pappagrappa.se/norrkoping/meny/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "129:- - 149:-", "category": ["Pizza", "Pasta", "AW"],
+            "price": "139:-", "category": ["Pizza", "Pasta", "AW"],
             "address": "Gamla Torget", "rating": 4.2, 
             "instagram_url": "https://instagram.com/pappagrappa", "instagram_handle": "@pappagrappa", 
             "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80" 
@@ -68,7 +68,7 @@ restaurants_config = [
         "name": "Brödernas", "city": "Norrköping", "lat": 58.5895, "lon": 16.1895,
         "type": "static", "url": "https://www.brodernas.nu/meny", "menu_selector": "h3", 
         "static_data": { 
-            "price": "115:- - 135:-", "category": ["Hamburgare", "Sallad"],
+            "price": "129:-", "category": ["Hamburgare", "Sallad"],
             "address": "Gamla Rådstugugatan 28", "rating": 4.3, 
             "instagram_url": "https://instagram.com/brodernas", "instagram_handle": "@brodernas", 
             "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" 
@@ -78,7 +78,7 @@ restaurants_config = [
         "name": "Spicy Hot", "city": "Norrköping", "lat": 58.5882, "lon": 16.1890,
         "type": "static", "url": "https://www.spicyhot.se/menyer/", "menu_selector": "div.menu-section", 
         "static_data": { 
-            "price": "105:- - 125:-", "category": ["Asiatiskt", "Wok", "Curry"],
+            "price": "115:-", "category": ["Asiatiskt", "Wok", "Curry"],
             "address": "Drottninggatan 55", "rating": 4.0, 
             "instagram_url": "https://instagram.com/spicyhotsverige", "instagram_handle": "@spicyhotsverige", 
             "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80" 
@@ -100,7 +100,7 @@ restaurants_config = [
         "name": "Stångs Magasin", "city": "Linköping", "lat": 58.4109, "lon": 15.6265,
         "type": "daily", "url": "https://stangsmagasin.se/lunch/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "145:- - 165:-", "category": ["Premium Husman", "Salladsbuffé", "Kravmärkt"],
+            "price": "155:-", "category": ["Premium Husman", "Salladsbuffé", "Kravmärkt"],
             "address": "Södra Stånggatan 1", "rating": 4.7, 
             "instagram_url": "https://instagram.com/stangsmagasin", "instagram_handle": "@stangsmagasin", 
             "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" 
@@ -110,7 +110,7 @@ restaurants_config = [
         "name": "Pappa Grappa", "city": "Linköping", "lat": 58.4105, "lon": 15.6215,
         "type": "daily", "url": "https://www.pappagrappa.se/linkoping/meny/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "129:- - 149:-", "category": ["Italienskt", "Pizza", "Pasta", "Buffé"],
+            "price": "139:-", "category": ["Italienskt", "Pizza", "Pasta", "Buffé"],
             "address": "Ågatan 43", "rating": 4.3, 
             "instagram_url": "https://instagram.com/pappagrappa", "instagram_handle": "@pappagrappa", 
             "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=600&q=80" 
@@ -118,8 +118,7 @@ restaurants_config = [
     },
     {
         "name": "Yogi", "city": "Linköping", "lat": 58.4098, "lon": 15.6240,
-        "type": "manual", "url": "https://restaurangyogi.com/lunch", 
-        "manual_menu": ["Chicken Tikka Masala", "Palak Paneer (Veg)", "Lamm Curry", "Dagens Naanbröd"],
+        "type": "daily", "url": "https://restaurangyogi.com/lunch", "menu_selector": "div.entry-content",
         "static_data": { 
             "price": "139:-", "category": ["Indiskt", "Husmanskost", "Sallad"],
             "address": "Platensgatan 5", "rating": 4.5, 
@@ -132,7 +131,7 @@ restaurants_config = [
         "type": "manual", "url": "https://stadsmissionenost.se/restaurang-von-dufva/lunch", 
         "manual_menu": ["Kött: Pannbiff med stekt lök", "Fisk: Panerad spätta", "Veg: Morotsbiffar"],
         "static_data": { 
-            "price": "138:-", "category": ["Husmanskost", "Kött", "Fisk", "Vegetariskt"],
+            "price": "135:-", "category": ["Husmanskost", "Kött", "Fisk", "Vegetariskt"],
             "address": "Gråbrödragatan 1", "rating": 4.4, 
             "instagram_url": "https://instagram.com/stadsmissionenscafeer", "instagram_handle": "@stadsmissionen", 
             "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" 
@@ -154,7 +153,7 @@ restaurants_config = [
         "type": "manual", "url": "https://cioccolata.se", 
         "manual_menu": ["Husets Lasagne", "Krämig Oxfilépasta", "Caesarsallad"],
         "static_data": { 
-            "price": "129:- - 145:-", "category": ["Italienskt", "Bistro", "Pasta", "Lasagne"],
+            "price": "135:-", "category": ["Italienskt", "Bistro", "Pasta", "Lasagne"],
             "address": "Ågatan 39", "rating": 4.2, 
             "instagram_url": "https://instagram.com/cioccolatabistro", "instagram_handle": "@cioccolatabistro", 
             "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80" 
@@ -175,13 +174,33 @@ restaurants_config = [
         "name": "M.O.O", "city": "Linköping", "lat": 58.4115, "lon": 15.6230,
         "type": "static", "url": "https://moo.se/lunch", "menu_selector": "body",
         "static_data": { 
-            "price": "149:- - 169:-", "category": ["Premium", "Hamburgare", "Steakhouse"],
+            "price": "159:-", "category": ["Premium", "Hamburgare", "Steakhouse"],
             "address": "Ågatan 31", "rating": 4.5, 
             "instagram_url": "https://instagram.com/moolinkoping", "instagram_handle": "@moolinkoping", 
             "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" 
         }
     }
 ]
+
+# --- NY FUNKTION: HITTA PRISER DYNAMISKT ---
+def extract_dynamic_price(full_text, fallback_price):
+    try:
+        # Leta efter "Dagens lunch ... 145" eller liknande
+        lunch_match = re.search(r'(?:lunch|pris|dagens).*?(\d{3})\s*(?:kr|:-)', full_text, re.IGNORECASE)
+        # Leta efter "avhämtning ... 120"
+        takeaway_match = re.search(r'(?:avhämtning|take\s?away).*?(\d{2,3})\s*(?:kr|:-)', full_text, re.IGNORECASE)
+        
+        if lunch_match:
+            l_price = lunch_match.group(1)
+            if takeaway_match:
+                t_price = takeaway_match.group(1)
+                return f"{l_price}:- (Takeaway {t_price}:-)"
+            else:
+                return f"{l_price}:-"
+                
+        return fallback_price
+    except:
+        return fallback_price
 
 def clean_text(text):
     return text.replace("●", "").replace("•", "").replace("*", "").replace("–", "-").strip()
@@ -256,12 +275,19 @@ def scrape_lunch():
                 else:
                     full_text = content_div.get_text(separator='\n') if content_div else soup.find('body').get_text(separator='\n')
 
+                # Hämta meny
                 menu_items = parse_menu_smart(full_text, (rest['type'] == 'daily'))
                 if not menu_items and 'manual_menu' in rest: menu_items = rest['manual_menu']
+                
+                # Hämta dynamiskt pris
+                static_data_copy = dict(rest['static_data'])
+                static_data_copy["price"] = extract_dynamic_price(full_text, static_data_copy["price"])
+                
             else:
                 menu_items = rest.get('manual_menu', [])
+                static_data_copy = rest['static_data']
 
-            output_data.append({"name": rest['name'], "city": rest['city'], "lat": rest['lat'], "lon": rest['lon'], "url": rest['url'], "menu": menu_items, **rest['static_data']})
+            output_data.append({"name": rest['name'], "city": rest['city'], "lat": rest['lat'], "lon": rest['lon'], "url": rest['url'], "menu": menu_items, **static_data_copy})
         except Exception as e:
             output_data.append({"name": rest['name'], "city": rest['city'], "lat": rest['lat'], "lon": rest['lon'], "url": rest['url'], "menu": rest.get('manual_menu', []), **rest['static_data']})
         time.sleep(1)
