@@ -179,9 +179,20 @@
                     menuHtml = `<li class="text-gray-400 italic text-[11px] pl-1 mt-1">Se meny på hemsidan</li>`;
                 }
 
-                // Snygga till pristryck (Byter ut ":- - :-" mot rent "kr")
+                // Snygga till pristryck och skapa grön avhämtnings-bubbla
                 let formattedPrice = place.price || '';
                 formattedPrice = formattedPrice.replace(/:-\s*-\s*/g, ' – ').replace(/:-/g, ' kr');
+
+                let takeawayBadge = '';
+                // Leta efter "(Takeaway 120 kr)" eller liknande i priset
+                let takeawayMatch = formattedPrice.match(/\((?:Takeaway|Avhämtning)\s*(.*?)\)/i);
+                
+                if (takeawayMatch) {
+                    // Skapa den gröna bubblan
+                    takeawayBadge = `<span class="inline-block bg-green-50 text-green-700 text-[9px] font-bold px-2 py-0.5 rounded-full border border-green-200 ml-2">Avhämtning ${takeawayMatch[1]}</span>`;
+                    // Klipp bort texten från det vanliga priset
+                    formattedPrice = formattedPrice.replace(/\s*\((?:Takeaway|Avhämtning)\s*.*?\)/i, '');
+                }
 
                 const card = `
                     <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-row h-[200px] overflow-hidden relative group">
@@ -204,7 +215,7 @@
                                 <div class="flex justify-between items-start mb-1 flex-shrink-0">
                                     <h3 class="text-base font-extrabold text-gray-900 truncate" title="${place.name}">${place.name}</h3>
                                     
-                                    <!-- INSTAGRAM (Tillbaka till rosa, och lite större: text-2xl) -->
+                                    <!-- INSTAGRAM -->
                                     <a href="${place.instagram_url}" target="_blank" class="text-pink-600 hover:text-pink-700 hover:scale-110 transition-transform ml-2 flex-shrink-0">
                                         <i class="fa-brands fa-instagram text-2xl"></i>
                                     </a>
@@ -221,7 +232,10 @@
                             <div class="flex justify-between items-end pt-3 border-t border-gray-100 mt-2 flex-shrink-0">
                                 <div class="flex flex-col">
                                     <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Pris</span>
-                                    <span class="text-sm font-black text-gray-800 tracking-tight">${formattedPrice}</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-black text-gray-800 tracking-tight">${formattedPrice}</span>
+                                        ${takeawayBadge}
+                                    </div>
                                 </div>
                                 <a href="${place.url}" target="_blank" class="text-[11px] font-bold text-white bg-gray-900 px-4 py-2 rounded-lg hover:bg-orange-500 transition-colors shadow-sm">
                                     Se meny
