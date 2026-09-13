@@ -18,7 +18,7 @@ restaurants_config = [
         "name": "Enoteket", "city": "Norrköping", "lat": 58.5885, "lon": 16.1885,
         "type": "daily", "url": "https://www.enoteket.se/meny/lunch/", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "135:-", "category": ["Husmanskost", "Salladsbuffé"],
+            "price": "139:- (Takeaway 125:-)", "category": ["Husmanskost", "Salladsbuffé"],
             "address": "Laxholmen", "rating": 4.6, 
             "instagram_url": "https://instagram.com/enoteket", "instagram_handle": "@enoteket", 
             "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" 
@@ -120,7 +120,7 @@ restaurants_config = [
         "name": "Yogi", "city": "Linköping", "lat": 58.4098, "lon": 15.6240,
         "type": "daily", "url": "https://restaurangyogi.com/lunch", "menu_selector": "div.entry-content",
         "static_data": { 
-            "price": "139:-", "category": ["Indiskt", "Husmanskost", "Sallad"],
+            "price": "145:- (Takeaway 120:-)", "category": ["Indiskt", "Husmanskost", "Sallad"],
             "address": "Platensgatan 5", "rating": 4.5, 
             "instagram_url": "https://instagram.com/yogilinkoping", "instagram_handle": "@yogilinkoping", 
             "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" 
@@ -185,9 +185,7 @@ restaurants_config = [
 # --- NY FUNKTION: HITTA PRISER DYNAMISKT ---
 def extract_dynamic_price(full_text, fallback_price):
     try:
-        # Leta efter "Dagens lunch ... 145" eller liknande
         lunch_match = re.search(r'(?:lunch|pris|dagens).*?(\d{3})\s*(?:kr|:-)', full_text, re.IGNORECASE)
-        # Leta efter "avhämtning ... 120"
         takeaway_match = re.search(r'(?:avhämtning|take\s?away).*?(\d{2,3})\s*(?:kr|:-)', full_text, re.IGNORECASE)
         
         if lunch_match:
@@ -275,11 +273,9 @@ def scrape_lunch():
                 else:
                     full_text = content_div.get_text(separator='\n') if content_div else soup.find('body').get_text(separator='\n')
 
-                # Hämta meny
                 menu_items = parse_menu_smart(full_text, (rest['type'] == 'daily'))
                 if not menu_items and 'manual_menu' in rest: menu_items = rest['manual_menu']
                 
-                # Hämta dynamiskt pris
                 static_data_copy = dict(rest['static_data'])
                 static_data_copy["price"] = extract_dynamic_price(full_text, static_data_copy["price"])
                 
