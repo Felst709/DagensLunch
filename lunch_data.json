@@ -6,7 +6,7 @@
         "lon": 16.1885,
         "url": "https://www.enoteket.se/meny/lunch/",
         "menu": [],
-        "price": "125:- - 145:-",
+        "price": "135:-",
         "category": [
             "Husmanskost",
             "Salladsbuffé"
@@ -24,7 +24,7 @@
         "lon": 16.189,
         "url": "https://norrkoping.ostgotakok.se/lunchmeny/",
         "menu": [],
-        "price": "135:- - 155:-",
+        "price": "145:-",
         "category": [
             "Premium Husman",
             "Salladsbuffé"
@@ -42,7 +42,7 @@
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
         "menu": [],
-        "price": "135:-",
+        "price": "450:-",
         "category": [
             "Husmanskost",
             "Salladsbuffé",
@@ -82,7 +82,7 @@
         "lon": 16.1888,
         "url": "https://www.pappagrappa.se/norrkoping/meny/",
         "menu": [],
-        "price": "129:- - 149:-",
+        "price": "139:-",
         "category": [
             "Pizza",
             "Pasta",
@@ -101,7 +101,7 @@
         "lon": 16.1895,
         "url": "https://www.brodernas.nu/meny",
         "menu": [],
-        "price": "115:- - 135:-",
+        "price": "129:-",
         "category": [
             "Hamburgare",
             "Sallad"
@@ -119,9 +119,12 @@
         "lon": 16.189,
         "url": "https://www.spicyhot.se/menyer/",
         "menu": [
-            "Please wait while your request is being verified..."
+            "Känn dofterna, hör fräsandet i våra wokpannor, se aktiviteten i köket och smaka hela skillnaden.",
+            "Nr 1. Panang Curry med kyckling",
+            "Kycklingfilé i panangcurry med paprika, bambuskott och ris.",
+            "Allergener: kräftdjur, fisk, sojabönor och koriander. Övrigt: innehåller vitlök."
         ],
-        "price": "105:- - 125:-",
+        "price": "115:-",
         "category": [
             "Asiatiskt",
             "Wok",
@@ -140,7 +143,10 @@
         "lon": 16.191,
         "url": "https://landerholmskonditori.se/",
         "menu": [
-            "Please wait while your request is being verified..."
+            "Landerholms - bröd­kultur sedan 1954",
+            "Bageri, konditori och brödkultur i Norrköping sedan 1954.",
+            "Välkommen till Landerholms-familjen! Vi har försett Norrköping med nygräddat bröd, fantastiskt fika och kulinariska lunchupplevelser i över sju decennier.",
+            "Tomatsås, fior di latte, prosciutto, Grana Pandano"
         ],
         "price": "119:-",
         "category": [
@@ -160,7 +166,7 @@
         "lon": 15.6265,
         "url": "https://stangsmagasin.se/lunch/",
         "menu": [],
-        "price": "145:- - 165:-",
+        "price": "155:-",
         "category": [
             "Premium Husman",
             "Salladsbuffé",
@@ -179,7 +185,7 @@
         "lon": 15.6215,
         "url": "https://www.pappagrappa.se/linkoping/meny/",
         "menu": [],
-        "price": "129:- - 149:-",
+        "price": "139:-",
         "category": [
             "Italienskt",
             "Pizza",
@@ -198,12 +204,7 @@
         "lat": 58.4098,
         "lon": 15.624,
         "url": "https://restaurangyogi.com/lunch",
-        "menu": [
-            "Chicken Tikka Masala",
-            "Palak Paneer (Veg)",
-            "Lamm Curry",
-            "Dagens Naanbröd"
-        ],
+        "menu": [],
         "price": "139:-",
         "category": [
             "Indiskt",
@@ -227,7 +228,7 @@
             "Fisk: Panerad spätta",
             "Veg: Morotsbiffar"
         ],
-        "price": "138:-",
+        "price": "135:-",
         "category": [
             "Husmanskost",
             "Kött",
@@ -275,7 +276,7 @@
             "Krämig Oxfilépasta",
             "Caesarsallad"
         ],
-        "price": "129:- - 145:-",
+        "price": "135:-",
         "category": [
             "Italienskt",
             "Bistro",
@@ -317,7 +318,7 @@
         "lon": 15.623,
         "url": "https://moo.se/lunch",
         "menu": [],
-        "price": "149:- - 169:-",
+        "price": "159:-",
         "category": [
             "Premium",
             "Hamburgare",
