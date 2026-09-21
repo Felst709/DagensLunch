@@ -41,7 +41,12 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [],
+        "menu": [
+            "Lasagne med tomat och mozarella",
+            "Veckans vegetariska",
+            "Vegetariska vårrullar ned chilidip",
+            "Veckans soppa"
+        ],
         "price": "450:-",
         "category": [
             "Husmanskost",
