@@ -41,12 +41,7 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [
-            "Schnitzelfredag med dessert (schnitzel med olika tillbehör tex: kryddsmör, såser, potatis)",
-            "Veckans vegetariska",
-            "Vegetariska vårrullar ned chilidip",
-            "Veckans soppa"
-        ],
+        "menu": [],
         "price": "450:-",
         "category": [
             "Husmanskost",
