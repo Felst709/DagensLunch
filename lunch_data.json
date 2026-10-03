@@ -41,12 +41,7 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [
-            "Veckans vegetariska",
-            "Broccolilåda med fetaost och tomater",
-            "Veckans soppa",
-            "Potatis- och purjolökssoppa"
-        ],
+        "menu": [],
         "price": "450:-",
         "category": [
             "Husmanskost",
