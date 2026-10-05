@@ -41,7 +41,12 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [],
+        "menu": [
+            "Svampfylld köttfärslimpa med dragongräddsås",
+            "Veckans vegetariska",
+            "Rostade rödbetor med fetaost och solrosfrön",
+            "Veckans soppa"
+        ],
         "price": "450:-",
         "category": [
             "Husmanskost",
