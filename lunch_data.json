@@ -41,12 +41,7 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [
-            "Schnitzelfredag med dessert (schnitzel med olika tillbehör tex: kryddsmör, såser, potatis)",
-            "Köp 11 lunchkuponger för priset av 10 = 1450 kr",
-            "Lunchhäftet köper du på plats hos oss i bistron!",
-            "Prenumerera på dagens meny och nyheter från vår restaurang!"
-        ],
+        "menu": [],
         "price": "450:-",
         "category": [
             "Husmanskost",
