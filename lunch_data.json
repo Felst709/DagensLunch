@@ -41,7 +41,12 @@
         "lat": 58.589,
         "lon": 16.184,
         "url": "https://louisdegeer.se/restaurang/dagens-lunch/",
-        "menu": [],
+        "menu": [
+            "Helstekt kotlettrad med champinjonsås och bearnaise",
+            "Veckans vegetariska",
+            "Veckans soppa",
+            "Grön ärtsoppa"
+        ],
         "price": "450:-",
         "category": [
             "Husmanskost",
