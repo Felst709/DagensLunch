@@ -163,7 +163,6 @@
             }
 
             items.forEach((place, index) => {
-                // Säkerställ att kategorier alltid är en array
                 let rawCat = place.category || "Mat";
                 let catArray = Array.isArray(rawCat) ? rawCat : [rawCat];
                 
@@ -171,7 +170,6 @@
                     `<span class="inline-block bg-orange-50 text-orange-700 text-[9px] font-bold px-2 py-0.5 rounded-full border border-orange-100">${cat}</span>`
                 ).join('');
 
-                // Menylista med line-clamp så texten aldrig bryter layouten
                 let menuHtml = '';
                 if (place.menu && place.menu.length > 0) {
                     menuHtml = place.menu.map(dish => `<li class="mb-1 text-gray-600 text-[11px] leading-tight line-clamp-1 pr-2" title="${dish}"><span class="text-orange-400 mr-1 text-[8px]">●</span> ${dish}</li>`).join('');
@@ -179,43 +177,35 @@
                     menuHtml = `<li class="text-gray-400 italic text-[11px] pl-1 mt-1">Se meny på hemsidan</li>`;
                 }
 
-                // Snygga till pristryck och skapa grön avhämtnings-bubbla
                 let formattedPrice = place.price || '';
                 formattedPrice = formattedPrice.replace(/:-\s*-\s*/g, ' – ').replace(/:-/g, ' kr');
 
                 let takeawayBadge = '';
-                // Leta efter "(Takeaway 120 kr)" eller liknande i priset
                 let takeawayMatch = formattedPrice.match(/\((?:Takeaway|Avhämtning)\s*(.*?)\)/i);
                 
                 if (takeawayMatch) {
-                    // Skapa den gröna bubblan
                     takeawayBadge = `<span class="inline-block bg-green-50 text-green-700 text-[9px] font-bold px-2 py-0.5 rounded-full border border-green-200 ml-2">Avhämtning ${takeawayMatch[1]}</span>`;
-                    // Klipp bort texten från det vanliga priset
                     formattedPrice = formattedPrice.replace(/\s*\((?:Takeaway|Avhämtning)\s*.*?\)/i, '');
                 }
 
                 const card = `
                     <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-row h-[200px] overflow-hidden relative group">
                         
-                        <!-- BILD & BETYG -->
                         <div class="w-1/3 relative overflow-hidden flex-shrink-0 bg-gray-100">
                             <img src="${place.image || 'https://images.unsplash.com/photo-1559339352-11d035aa65de'}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                             
-                            <!-- BETYG (Större och mer i fokus) -->
                             <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-sm font-extrabold text-gray-900 shadow-md flex items-center gap-1.5 border border-white/20">
                                 <i class="fa-solid fa-star text-yellow-400 text-xs"></i> 
                                 ${place.rating || '4.0'}
                             </div>
                         </div>
                         
-                        <!-- INFORMATION -->
                         <div class="w-2/3 p-4 flex flex-col justify-between overflow-hidden bg-white">
                             <div class="overflow-hidden flex flex-col h-full">
                                 
                                 <div class="flex justify-between items-start mb-1 flex-shrink-0">
                                     <h3 class="text-base font-extrabold text-gray-900 truncate" title="${place.name}">${place.name}</h3>
                                     
-                                    <!-- INSTAGRAM -->
                                     <a href="${place.instagram_url}" target="_blank" class="text-pink-600 hover:text-pink-700 hover:scale-110 transition-transform ml-2 flex-shrink-0">
                                         <i class="fa-brands fa-instagram text-2xl"></i>
                                     </a>
@@ -228,7 +218,6 @@
                                 <ul class="overflow-hidden flex-grow mt-1.5">${menuHtml}</ul>
                             </div>
 
-                            <!-- PRIS & KNAPP -->
                             <div class="flex justify-between items-end pt-3 border-t border-gray-100 mt-2 flex-shrink-0">
                                 <div class="flex flex-col">
                                     <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Pris</span>
@@ -253,8 +242,14 @@
         function initMap(city, searchString = "") {
             const center = cityCenters[city];
             if (map) { map.remove(); map = null; }
+            
             map = L.map('map', { scrollWheelZoom: false }).setView([center.lat, center.lon], 13);
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+            
+            // Säker och helt gratis kart-bakgrund som inte kräver API-nyckel
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
             
             const searchLower = searchString.toLowerCase();
             allRestaurants.filter(place => {
@@ -274,7 +269,6 @@
             });
         }
 
-        // Datum och vecka i headern
         const today = new Date();
         document.getElementById('header-date').innerText = today.toLocaleDateString('sv-SE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
         
@@ -283,7 +277,6 @@
         const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
         document.getElementById('week-display').innerText = "VECKA " + Math.ceil((((d - yearStart) / 86400000) + 1)/7);
 
-        // Starta allt
         loadLunchData();
     </script>
 </body>
